@@ -1,0 +1,87 @@
+body {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(150deg, rgba(2, 0, 36, 1) 0%, rgba(245, 245, 245, 1) 0, rgba(239, 252, 255, 1) 100%);
+    font-family: 'Tajawal', sans-serif;
+}
+
+.container {}
+
+#twitchBox {
+    width: 500px;
+    margin: 200px auto;
+    text-align: center;
+}
+
+#streamBox {
+    background: #fbfbfb;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 5px #eeeeee;
+}
+
+.streamers {
+    list-style: none;
+    height: 60px;
+    border-bottom: 1px solid #ddd;
+    line-height: 72px;
+    background: #fff;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-weight: 100;
+    font-size: 30px;
+    color: #bbbbbb;
+    border: 1px solid #f1f1f1;
+    box-shadow: 4px 4px 5px #eeeeee;
+}
+
+.title {
+    color: #919191;
+}
+
+.icon {
+    float: right;
+    margin-right: 10px;
+}
+
+.online {
+    color: #91E370;
+}
+
+.offline {
+    color: #E37091;
+}
+
+.logo {
+    width: 50px;
+    display: block;
+    opacity: 0.33;
+    transition: opacity 1s;
+    filter: invert(100%);
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    margin: 0 -25px;
+}
+
+.logo:hover {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.watchLive {
+    color: #4b367c;
+    border: none;
+    line-height: 21px;
+    position: relative;
+    float: left;
+    margin-top: 14px;
+    margin-left: 20px;
+    border-radius: 4px;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hide {
+    color: #fff !important;
+}
