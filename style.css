@@ -2,6 +2,7 @@ body {
     background: rgb(2, 0, 36);
     background: linear-gradient(150deg, rgba(2, 0, 36, 1) 0%, rgba(245, 245, 245, 1) 0, rgba(239, 252, 255, 1) 100%);
     font-family: 'Tajawal', sans-serif;
+    height: 100vh;
 }
 
 .container {}
@@ -64,6 +65,7 @@ body {
     bottom: 0%;
     left: 50%;
     margin: 0 -25px;
+    padding-bottom: 50px;
 }
 
 .logo:hover {
@@ -110,7 +112,7 @@ body {
     padding: 5px;
     border-radius: 2px;
     margin-top: 16px;
-    margin-left: -275px;
+    margin-left: -200px;
     display: none;
     z-index: 999;
 }
