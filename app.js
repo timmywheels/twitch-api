@@ -10,11 +10,11 @@ var addUserBtn = document.getElementById('addUserBtn');
 var toolTip = document.getElementsByClassName('tooltip');
 
 // addUserBtn.addEventListener('click', function(e) {
-            //     e.preventDefault();
-            //     streamBox.innerHTML = '';
-            //     users.push(addUserInput.value);
-            //     startApp();
-            // });
+//     e.preventDefault();
+//     streamBox.innerHTML = '';
+//     users.push(addUserInput.value);
+//     startApp();
+// });
 
 function startApp() {
 
@@ -32,7 +32,7 @@ function startApp() {
 
             var data = JSON.parse(this.response);
 
-            console.log(users[i])
+            // console.log(users[i])
 
             if (data.stream === null) {
 
@@ -61,6 +61,7 @@ function startApp() {
             }
 
             else {
+
                 var li = document.createElement('li');
                 li.innerHTML = data.stream.channel.display_name;
                 var iconDiv = document.createElement('div');
@@ -90,17 +91,24 @@ function startApp() {
                 icon.classList.add('fa-circle-notch');
                 icon.classList.add('fa-spin');
 
-                for (var i = 0; i < users.length; users++) {
-
-                    console.log('User:', users[i]);
-
-                }
-
                 function displayToolTip() {
-                    var toolTips = document.getElementsByClassName('tooltip')
-                    toolTips[i].style.display = 'inline-block';
+                    var toolTips = document.getElementsByClassName('tooltip');
+                    for (var i in users) {
+                        toolTips[i].style.display = 'inline-block';
+                    }
+
                 }
+
+                function hideToolTip() {
+                    var toolTips = document.getElementsByClassName('tooltip');
+                    for (var i in users) {
+                        toolTips[i].style.display = 'none';
+                    }
+
+                }
+
                 watch.onmouseover = displayToolTip;
+                watch.onmouseout = hideToolTip;
 
                 link.appendChild(watch);
                 li.appendChild(link);
