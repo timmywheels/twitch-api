@@ -1,7 +1,7 @@
 var twitchBox = {
 
-    // users: ['ninja', 'summit1g', 'OverwatchLeague', 'freecodecamp'],
-    users: ['bethesda', 'summit1g', 'sodapoppin', 'freecodecamp'],
+    users: ['ninja', 'summit1g', 'OverwatchLeague', 'freecodecamp'],
+    // users: ['OverwatchLeague', 'TotalBiscuit', 'TSM_Myth', 'freecodecamp'],
 
     streamBox: document.getElementById('streamBox'),
     streamers: document.getElementsByClassName('streamers'),
@@ -18,7 +18,9 @@ var twitchBox = {
 
             var xhr = new XMLHttpRequest();
 
-            xhr.open('GET', url, true);
+            // Setting async to true here will show all offline users
+            // as the last user of the 'users' array
+            xhr.open('GET', url, false);
 
             xhr.setRequestHeader("Client-ID", "e7vwg9cc1ocxvimfgff2dvzc6fd81d");
 

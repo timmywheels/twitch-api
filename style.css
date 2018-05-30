@@ -33,6 +33,7 @@ body {
     border: 1px solid #f1f1f1;
     border: 1px solid rgba(75, 54, 124, 0.15);
     box-shadow: 4px 4px 5px #eeeeee;
+    position: relative;
 }
 
 .title img {
@@ -114,7 +115,8 @@ body {
     padding: 5px;
     border-radius: 2px;
     margin-top: 16px;
-    margin-left: -225px;
     display: none;
     z-index: 999;
+    left: 0;
+    margin-left: 60px;
 }
