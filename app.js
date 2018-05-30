@@ -1,6 +1,7 @@
 var twitchBox = {
 
-    users: ['ninja', 'summit1g', 'OverwatchLeague', 'freecodecamp'],
+    // users: ['ninja', 'summit1g', 'OverwatchLeague', 'freecodecamp'],
+    users: ['bethesda', 'summit1g', 'sodapoppin', 'freecodecamp'],
 
     streamBox: document.getElementById('streamBox'),
     streamers: document.getElementsByClassName('streamers'),
@@ -61,6 +62,7 @@ var twitchBox = {
                     var li = document.createElement('li');
                     var iconDiv = document.createElement('div');
                     var link = document.createElement('a');
+                    var profile = document.createElement('a');
                     var watch = document.createElement('i');
                     var toolTip = document.createElement('div');
                     var icon = document.createElement('i');
@@ -68,7 +70,8 @@ var twitchBox = {
                     li.classList.add('streamers');
                     li.innerHTML = data.stream.channel.display_name;
                     link.href = 'https://twitch.tv/' + data.stream.channel.display_name;
-                    link.setAttribute('target', '_blank');
+                    profile.href =
+                        link.setAttribute('target', '_blank');
 
                     watch.classList.add('watchLive');
                     watch.classList.add('fab');
@@ -103,12 +106,23 @@ var twitchBox = {
     },
 
     showToolTip: function() {
+
         twitchBox.streamBox.addEventListener('mouseover', function(e) {
-            for (var i in twitchBox.watchLive) {
+
+            var toolTipsArr = Array.from(twitchBox.toolTips);
+
+            for (var i = 0; i < toolTipsArr.length; i++) {
+
                 if (e.target.classList.contains('watchLive')) {
-                    e.toolTip[i].style.display = 'block';
-                    console.log('yup');
+                    e.target.parentNode.nextSibling.classList.add('show'); //traverse to the tooltip div from the watchList class
+
                 }
+                else {
+
+                    twitchBox.toolTips[i].classList.remove('show');
+
+                }
+
             }
         })
     },
