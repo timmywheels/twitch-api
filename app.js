@@ -1,6 +1,8 @@
+// Twitch Box App
+
 var twitchBox = {
 
-    users: ['ninja', 'summit1g', 'OverwatchLeague', 'freecodecamp'],
+    users: ['ninja', 'summit1g', 'OverwatchLeague', 'freecodecamp', 'BlodgetTV'],
     // users: ['OverwatchLeague', 'TotalBiscuit', 'TSM_Myth', 'freecodecamp'],
 
     streamBox: document.getElementById('streamBox'),
