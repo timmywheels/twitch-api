@@ -3,8 +3,6 @@
 var twitchBox = {
 
     users: ['ninja', 'summit1g', 'OverwatchLeague', 'freecodecamp', 'BlodgetTV'],
-    // users: ['OverwatchLeague', 'TotalBiscuit', 'TSM_Myth', 'freecodecamp'],
-
     streamBox: document.getElementById('streamBox'),
     streamers: document.getElementsByClassName('streamers'),
     addUserInput: document.getElementById('addUserInput'),
@@ -12,11 +10,11 @@ var twitchBox = {
     toolTips: document.getElementsByClassName('tooltip'),
     watchLive: document.getElementsByClassName('watchLive'),
 
-    startApp: function() {
+    startApp: function () {
 
         for (var i in twitchBox.users) {
 
-            var url = "https://api.twitch.tv/kraken/streams/" + twitchBox.users[i];
+            var url = "https://api.twitch.tv/helix/streams?user_login=" + twitchBox.users[i];
 
             var xhr = new XMLHttpRequest();
 
@@ -26,15 +24,15 @@ var twitchBox = {
 
             xhr.setRequestHeader("Client-ID", "e7vwg9cc1ocxvimfgff2dvzc6fd81d");
 
-            xhr.onload = function() {
+            xhr.onload = function () {
 
                 var userName = twitchBox.users;
 
                 console.log(twitchBox.users[i]);
 
-                var data = JSON.parse(this.response);
+                var stream = JSON.parse(this.response);
 
-                if (data.stream === null) {
+                if (!stream.data.length) {
 
                     var offLi = document.createElement('li');
                     var offWatch = document.createElement('i');
@@ -59,9 +57,9 @@ var twitchBox = {
                     offIconDiv.appendChild(offIcon);
                     twitchBox.streamBox.appendChild(offLi);
 
-                }
+                } else {
 
-                else {
+                    console.log('stream:', stream);
 
                     var li = document.createElement('li');
                     var iconDiv = document.createElement('div');
@@ -72,10 +70,9 @@ var twitchBox = {
                     var icon = document.createElement('i');
 
                     li.classList.add('streamers');
-                    li.innerHTML = data.stream.channel.display_name;
-                    link.href = 'https://twitch.tv/' + data.stream.channel.display_name;
-                    profile.href =
-                        link.setAttribute('target', '_blank');
+                    li.innerHTML = stream.data[0].user_name;
+                    link.href = 'https://twitch.tv/' + twitchBox.users[i];
+                    profile.href = link.setAttribute('target', '_blank');
 
                     watch.classList.add('watchLive');
                     watch.classList.add('fab');
@@ -84,7 +81,7 @@ var twitchBox = {
 
 
                     toolTip.classList.add('tooltip');
-                    toolTip.innerHTML = data.stream.channel.status;
+                    toolTip.innerHTML = twitchBox.users[i];
 
                     iconDiv.classList.add('icon');
                     iconDiv.classList.add('online');
@@ -109,9 +106,9 @@ var twitchBox = {
 
     },
 
-    showToolTip: function() {
+    showToolTip: function () {
 
-        twitchBox.streamBox.addEventListener('mouseover', function(e) {
+        twitchBox.streamBox.addEventListener('mouseover', function (e) {
 
             var toolTipsArr = Array.from(twitchBox.toolTips);
 
@@ -120,8 +117,7 @@ var twitchBox = {
                 if (e.target.classList.contains('watchLive')) {
                     e.target.parentNode.nextSibling.classList.add('show'); //traverse to the tooltip div from the watchList class
 
-                }
-                else {
+                } else {
 
                     twitchBox.toolTips[i].classList.remove('show');
 
